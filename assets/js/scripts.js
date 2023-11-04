@@ -222,7 +222,7 @@ function playPcTurn() {
         alert('GAME OVER')
         location.reload();
         return;
-      }
+      } else
       if (playerRedElement.parentElement.classList.contains("card"))
       {
         document.getElementById("dice-side").value = '0';
@@ -287,7 +287,7 @@ function showACard() {
       element.classList.add("gate-open");
     }
     return;
-  }
+  } else
   if (card.action == "gateClose") {
     let element = document.querySelector(`.gate-${playerColor}`);
 
@@ -296,20 +296,23 @@ function showACard() {
       element.classList.add("gate-close");
     }
     return;
-  }
+  } else
   if (card.action == "opGateOpen") {
     playerColor = getTurnToPlay() == 0 ? "blue" : "red";
+        console.log(playerColor)
     let element = document.querySelector(`.gate-${playerColor}`);
-
+    console.log(element)
     if (element.classList.contains("gate-close")) {
       element.classList.remove("gate-close");
       element.classList.add("gate-open");
     }
     return;
-  }
+  } else
   if (card.action == "opGateClose") {
     playerColor = getTurnToPlay() == 0 ? "blue" : "red";
+    console.log(playerColor)
     let element = document.querySelector(`.gate-${playerColor}`);
+    console.log(element)
 
     if (element.classList.contains("gate-open")) {
       element.classList.remove("gate-open");
@@ -342,7 +345,7 @@ function playerMoveOnClick(cellID) {
           alert('YOU WON!');
           location.reload();
           return;
-        }
+        } else
         if (playerBlueElement.parentElement.classList.contains("card"))
         {
           document.getElementById("dice-side").value = '0';

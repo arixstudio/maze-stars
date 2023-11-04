@@ -145,25 +145,25 @@
 .available {
   background-color: #46ffc1;
 }
-.gate-red.gate-left.gate-close {
+.gate-red.gate-close {
   border-top: 0;
   border-bottom: 0;
   border-right: 0;
   border-left: 2px solid red !important;
 }
-.gate-red.gate-left.gate-open {
+.gate-red.gate-open {
   border-top: 2px solid red !important;
   border-bottom: 0;
   border-right: 0;
   border-left: 0;
 }
-.gate-blue.gate-right.gate-close {
+.gate-blue.gate-close {
   border-top: 0;
   border-right: 2px solid blue !important;
   border-bottom: 0;
   border-left: 0;
 }
-.gate-blue.gate-right.gate-open {
+.gate-blue.gate-open {
   border-top: 0;
   border-right: 0;
   border-bottom: 2px solid blue !important;

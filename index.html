@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Maze Stars</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
     <!-- Maze -->
@@ -58,7 +58,11 @@
         class="grid-item b0000 star-block gate-red gate-left gate-close"
         title="44--b0000"
       ></span>
-      <span id="45" class="grid-item b0100 star-block star-bg" title="45--b0100"></span>
+      <span
+        id="45"
+        class="grid-item b0100 star-block star-bg"
+        title="45--b0100"
+      ></span>
       <span id="46" class="grid-item b0010" title="46--b0010"></span>
       <span id="47" class="grid-item b0110" title="47--b0110"></span>
       <span id="48" class="grid-item b0010" title="48--b0010"></span>
@@ -123,33 +127,35 @@
     <br />
     <br />
     <!-- Control -->
-    <input
-      type="radio"
-      id="singlePlayer"
-      name="playerType"
-      value="single"
-      checked
-    />
-    <label for="singlePlayer">1 Player</label>
-    <input
-      type="radio"
-      id="multiplayer"
-      name="playerType"
-      value="multi"
-      disabled
-    />
-    <label for="multiplayer" style="margin-right: 33px">2 Players</label>
-    <label for="player">Player:</label>
-    <input type="text" id="player" name="player" value="" disabled />
-    <button id="roll-dice" onclick="rollDice()">Roll Dice</button>
-    <input
-      style="width: 10px"
-      type="text"
-      id="dice-side"
-      name="dice-side"
-      value=""
-      disabled
-    />
+    <div class="control-container">
+      <input
+        type="radio"
+        id="singlePlayer"
+        name="playerType"
+        value="single"
+        checked
+      />
+      <label for="singlePlayer">1 Player</label>
+      <input
+        type="radio"
+        id="multiplayer"
+        name="playerType"
+        value="multi"
+        disabled
+      />
+      <label for="multiplayer" style="margin-right: 23px">2 Players</label>
+      <label for="player">Player:</label>
+      <input type="text" id="player" name="player" value="" disabled />
+      <button id="roll-dice" onclick="rollDice()">Roll Dice</button>
+      <input
+        style="width: 10px"
+        type="text"
+        id="dice-side"
+        name="dice-side"
+        value=""
+        disabled
+      />
+    </div>
     <script src="assets/js/scripts.js"></script>
   </body>
 </html>

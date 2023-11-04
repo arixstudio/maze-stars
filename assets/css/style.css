@@ -116,6 +116,12 @@
   width: 500px;
   height: 500px;
   grid-gap: 0;
+  margin: 30px auto;
+}
+
+.control-container {
+  text-align: center;
+  margin-left: 18px;
 }
 
 .grid-item {

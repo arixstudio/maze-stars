@@ -218,12 +218,14 @@ function playPcTurn() {
       const playerRedElement = document.querySelector(".player-red");
       if (playerRedElement.parentElement.classList.contains("star-block"))
       {
+        document.getElementById("dice-side").value = '0';
         alert('GAME OVER')
         location.reload();
         return;
       }
       if (playerRedElement.parentElement.classList.contains("card"))
       {
+        document.getElementById("dice-side").value = '0';
         showACard();
         setTurnToPlay(1);
         playNextTurn();
@@ -254,12 +256,12 @@ function playNextTurn() {
 function showACard() {
   const cards = [
     {
-      message: "Oops! Your gate is opened!",
-      action: "gateOpen",
-    },
-    {
       message: "Oops! Your gate is closed!",
       action: "gateClose",
+    },
+    {
+      message: "Oops! Your gate is opened!",
+      action: "gateOpen",
     },
     {
       message: "Oops! Your opponent's gate is opened!",
@@ -271,7 +273,8 @@ function showACard() {
     },
   ];
 
-  let card = cards[Math.floor(Math.random() * 4) + 1];
+  let randomNumber = Math.floor(Math.random() * 4) + 1;
+  let card = cards[randomNumber];
   let playerColor = getTurnToPlay() == 0 ? "red" : "blue";
   
   alert(card.message);
@@ -335,12 +338,14 @@ function playerMoveOnClick(cellID) {
         const playerBlueElement = document.querySelector(".player-blue");
         if (playerBlueElement.parentElement.classList.contains("star-block"))
         {
+          document.getElementById("dice-side").value = '0';
           alert('YOU WON!');
           location.reload();
           return;
         }
         if (playerBlueElement.parentElement.classList.contains("card"))
         {
+          document.getElementById("dice-side").value = '0';
           showACard();
           setTurnToPlay(0);
           playNextTurn();

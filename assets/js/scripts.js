@@ -95,15 +95,9 @@ function getAvailableAdjacentCells(matrix, cellID) {
   let availableDirections = getCellInnerAvailableDirections(cellID);
   let availableCells = [];
 
-  if (
-    adjacentCells.top !== null &&
-    availableDirections.indexOf("top") !== -1
-  ) {
+  if (adjacentCells.top !== null && availableDirections.indexOf("top") !== -1) {
     let lastFourDigits = adjacentCells.top.slice(-4);
-    if (
-      lastFourDigits.charAt(2) === "0" &&
-      isDeadEnd(adjacentCells.top.slice(0, 2)) == false
-    ) {
+    if (lastFourDigits.charAt(2) === "0") {
       availableCells.push(adjacentCells.top.slice(0, 2));
     }
   }
@@ -113,10 +107,7 @@ function getAvailableAdjacentCells(matrix, cellID) {
     availableDirections.indexOf("right") !== -1
   ) {
     let lastFourDigits = adjacentCells.right.slice(-4);
-    if (
-      lastFourDigits.charAt(3) === "0" &&
-      isDeadEnd(adjacentCells.right.slice(0, 2)) == false
-    ) {
+    if (lastFourDigits.charAt(3) === "0") {
       availableCells.push(adjacentCells.right.slice(0, 2));
     }
   }
@@ -126,10 +117,7 @@ function getAvailableAdjacentCells(matrix, cellID) {
     availableDirections.indexOf("bottom") !== -1
   ) {
     let lastFourDigits = adjacentCells.bottom.slice(-4);
-    if (
-      lastFourDigits.charAt(0) === "0" &&
-      isDeadEnd(adjacentCells.bottom.slice(0, 2)) == false
-    ) {
+    if (lastFourDigits.charAt(0) === "0") {
       availableCells.push(adjacentCells.bottom.slice(0, 2));
     }
   }
@@ -139,23 +127,21 @@ function getAvailableAdjacentCells(matrix, cellID) {
     availableDirections.indexOf("left") !== -1
   ) {
     let lastFourDigits = adjacentCells.left.slice(-4);
-    if (
-      lastFourDigits.charAt(1) === "0" &&
-      isDeadEnd(adjacentCells.left.slice(0, 2)) == false
-    ) {
+    if (lastFourDigits.charAt(1) === "0") {
       availableCells.push(adjacentCells.left.slice(0, 2));
     }
   }
 
-  return availableCells;
-}
+  function removeClosedGates(availableCells) {
+    return availableCells.filter((id) => {
+      const element = document.getElementById(id);
+      return !(element && element.classList.contains("gate-close"));
+    });
+  }
 
-function isDeadEnd(cellID) {
-  let availableDirections = getCellInnerAvailableDirections(cellID);
-  if (availableDirections.length === 1) {
-    console.log(cellID, "is dead end.");
-    return true;
-  } else return false;
+  availableCells = removeClosedGates(availableCells);
+
+  return availableCells;
 }
 
 function markAvailableAdjacentCells(cellIDs) {
@@ -206,7 +192,6 @@ function rollDice() {
 }
 
 function playPcTurn() {
-  let playerID = getTurnToPlay();
   let mazeMatrix = createMatrixFromMaze();
   document.getElementById("player").value = "Player Red [PC]";
   document.getElementById("roll-dice").disabled = true;
@@ -216,7 +201,7 @@ function playPcTurn() {
   var traversedCells = [];
 
   for (let i = 0; i <= count; i++) {
-    function delay() {
+    const timer1 = setTimeout(function () {
       let playerPositionID = getPlayerPositionID(0);
       traversedCells.push(playerPositionID);
       let availableCells = getAvailableAdjacentCells(
@@ -228,17 +213,30 @@ function playPcTurn() {
       let newAvailableCells = availableCells.filter(
         (item) => !traversedCells.includes(item)
       );
-      console.log(newAvailableCells);
-      let nextStepID = newAvailableCells[0];
+      let nextStepID = newAvailableCells[Math.round(Math.random())];
       console.log(nextStepID);
+      const playerRedElement = document.querySelector(".player-red");
+      if (playerRedElement.parentElement.classList.contains("star-block"))
+      {
+        alert('GAME OVER')
+        location.reload();
+        return;
+      }
+      if (playerRedElement.parentElement.classList.contains("card"))
+      {
+        showACard();
+        setTurnToPlay(1);
+        playNextTurn();
+        return;
+      }
       movePlayer("player-red", nextStepID);
-    }
-    setTimeout(delay, (i + 1) * 1000);
+    }, (i + 1) * 500);
   }
-  setTimeout(function () {
+  const timer2 = setTimeout(function () {
     setTurnToPlay(1);
     playNextTurn();
-  }, 6000);
+    clearTimeout(timer2);
+  }, 3000);
 }
 
 function playPlayerOneTurn() {
@@ -253,11 +251,76 @@ function playNextTurn() {
   else playPlayerOneTurn();
 }
 
+function showACard() {
+  const cards = [
+    {
+      message: "Oops! Your gate is opened!",
+      action: "gateOpen",
+    },
+    {
+      message: "Oops! Your gate is closed!",
+      action: "gateClose",
+    },
+    {
+      message: "Oops! Your opponent's gate is opened!",
+      action: "opGateOpen",
+    },
+    {
+      message: "Oops! Your opponent's gate is closed!",
+      action: "opGateclose",
+    },
+  ];
+
+  let card = cards[Math.floor(Math.random() * 4) + 1];
+  let playerColor = getTurnToPlay() == 0 ? "red" : "blue";
+  
+  alert(card.message);
+
+  if (card.action == "gateOpen") {
+    let element = document.querySelector(`.gate-${playerColor}`);
+
+    if (element.classList.contains("gate-close")) {
+      element.classList.remove("gate-close");
+      element.classList.add("gate-open");
+    }
+    return;
+  }
+  if (card.action == "gateClose") {
+    let element = document.querySelector(`.gate-${playerColor}`);
+
+    if (element.classList.contains("gate-open")) {
+      element.classList.remove("gate-open");
+      element.classList.add("gate-close");
+    }
+    return;
+  }
+  if (card.action == "opGateOpen") {
+    playerColor = getTurnToPlay() == 0 ? "blue" : "red";
+    let element = document.querySelector(`.gate-${playerColor}`);
+
+    if (element.classList.contains("gate-close")) {
+      element.classList.remove("gate-close");
+      element.classList.add("gate-open");
+    }
+    return;
+  }
+  if (card.action == "opGateClose") {
+    playerColor = getTurnToPlay() == 0 ? "blue" : "red";
+    let element = document.querySelector(`.gate-${playerColor}`);
+
+    if (element.classList.contains("gate-open")) {
+      element.classList.remove("gate-open");
+      element.classList.add("gate-close");
+    }
+    return;
+  }
+}
+
 function playerMoveOnClick(cellID) {
   const mazeMatrix = createMatrixFromMaze();
   const playerPositionID = getPlayerPositionID();
   let diceSide = document.getElementById("dice-side").value;
-  if (getTurnToPlay() === '1' && diceSide.length >=1) {
+  if (getTurnToPlay() === "1" && diceSide.length >= 1) {
     if (diceSide >= 1) {
       let playerPositionID = getPlayerPositionID(1);
       let availableCells = getAvailableAdjacentCells(
@@ -269,6 +332,20 @@ function playerMoveOnClick(cellID) {
       if (availableCells.indexOf(cellID) !== -1) {
         movePlayer("player-blue", cellID);
         document.getElementById("dice-side").value = diceSide - 1;
+        const playerBlueElement = document.querySelector(".player-blue");
+        if (playerBlueElement.parentElement.classList.contains("star-block"))
+        {
+          alert('YOU WON!');
+          location.reload();
+          return;
+        }
+        if (playerBlueElement.parentElement.classList.contains("card"))
+        {
+          showACard();
+          setTurnToPlay(0);
+          playNextTurn();
+          return;
+        }
       } else {
         return;
       }

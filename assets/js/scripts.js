@@ -257,9 +257,8 @@ function playerMoveOnClick(cellID) {
   const mazeMatrix = createMatrixFromMaze();
   const playerPositionID = getPlayerPositionID();
   let diceSide = document.getElementById("dice-side").value;
-  // Create the maze matrix
   if (getTurnToPlay() === '1' && diceSide.length >=1) {
-    if (diceSide > 1) {
+    if (diceSide >= 1) {
       let playerPositionID = getPlayerPositionID(1);
       let availableCells = getAvailableAdjacentCells(
         mazeMatrix,
@@ -270,6 +269,8 @@ function playerMoveOnClick(cellID) {
       if (availableCells.indexOf(cellID) !== -1) {
         movePlayer("player-blue", cellID);
         document.getElementById("dice-side").value = diceSide - 1;
+      } else {
+        return;
       }
     } else {
       setTurnToPlay(0);

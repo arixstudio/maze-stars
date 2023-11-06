@@ -197,10 +197,9 @@ function playPcTurn() {
   document.getElementById("roll-dice").disabled = true;
   let dice = rollDice();
 
-  let count = dice - 1;
   var traversedCells = [];
 
-  for (let i = 0; i <= count; i++) {
+  for (let i = 1; i <= dice; i++) {
     const timer1 = setTimeout(function () {
       let playerPositionID = getPlayerPositionID(0);
       traversedCells.push(playerPositionID);
@@ -225,7 +224,7 @@ function playPcTurn() {
         location.reload();
         return;
       } else
-      if (playerRedElement.parentElement.classList.contains("card"))
+      if (playerRedElement.parentElement.classList.contains("card") && document.getElementById("dice-side").value != dice)
       {
         document.getElementById("dice-side").value = '0';
         showACard();

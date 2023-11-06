@@ -219,6 +219,8 @@ function playPcTurn() {
       if (playerRedElement.parentElement.classList.contains("star-block"))
       {
         document.getElementById("dice-side").value = '0';
+        setTurnToPlay(0);
+        playNextTurn();
         alert('GAME OVER')
         location.reload();
         return;
@@ -324,7 +326,6 @@ function showACard() {
 
 function playerMoveOnClick(cellID) {
   const mazeMatrix = createMatrixFromMaze();
-  const playerPositionID = getPlayerPositionID();
   let diceSide = document.getElementById("dice-side").value;
   if (getTurnToPlay() === "1" && diceSide.length >= 1) {
     if (diceSide >= 1) {
@@ -338,11 +339,19 @@ function playerMoveOnClick(cellID) {
       if (availableCells.indexOf(cellID) !== -1) {
         movePlayer("player-blue", cellID);
         document.getElementById("dice-side").value = diceSide - 1;
+        if(document.getElementById("dice-side").value == 0)
+        {
+          setTurnToPlay(0);
+          playNextTurn();
+          return;
+        }
         const playerBlueElement = document.querySelector(".player-blue");
         if (playerBlueElement.parentElement.classList.contains("star-block"))
         {
           document.getElementById("dice-side").value = '0';
           alert('YOU WON!');
+          setTurnToPlay(0);
+          playNextTurn();
           location.reload();
           return;
         } else
@@ -361,6 +370,9 @@ function playerMoveOnClick(cellID) {
       setTurnToPlay(0);
       playNextTurn();
     }
+  } else {
+    setTurnToPlay(0);
+    playNextTurn();
   }
 }
 

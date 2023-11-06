@@ -230,7 +230,8 @@ function playPcTurn() {
       ) {
         isOver = 1;
         alert("GAME OVER");
-        location.reload();
+        console.log('Player Blue won!')
+        // location.reload();
         return;
       } else if (
         playerRedElement.parentElement.classList.contains("card") &&
@@ -290,14 +291,12 @@ function playerMoveOnClick(cellID) {
           const playerBlueElement = document.querySelector(".player-blue");
           if (playerBlueElement.parentElement.classList.contains("star-block")) {
             document.getElementById("dice-side").value = "0";
+            console.log('Player Red won!')
             alert("YOU WON!");
-            setTurnToPlay(0);
-            playNextTurn();
-            location.reload();
+            // location.reload();
             return;
           } else if (playerBlueElement.parentElement.classList.contains("card")) {
             showACard();
-            console.log("Hit the card");
           }
         } else {
           console.log('Unable to move to: ',cellID);
@@ -325,7 +324,7 @@ function playNextTurn() {
 
 function showACard() {
 
-  console.log('Landed on card.');
+  console.log('[◩] Landed on card.');
   const cards = [
     {
       message: "Oops! Red gate is opened!",

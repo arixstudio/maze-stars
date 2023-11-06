@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .b0000 {
   border-top-color: #fdfdfd;
   border-right-color: #fdfdfd;

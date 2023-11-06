@@ -236,7 +236,7 @@ function playPcTurn() {
       ) {
         isOver = 1;
         console.log("Hit the card");
-        showACard("Red");
+        showACard();
         setTurnToPlay(1);
         playNextTurn();
         return;
@@ -266,7 +266,7 @@ function playNextTurn() {
   else playPlayerOneTurn();
 }
 
-function showACard(playerColor) {
+function showACard() {
   const cards = [
     {
       message: "Oops! Red gate is opened!",
@@ -288,13 +288,12 @@ function showACard(playerColor) {
 
   let randomNumber = Math.floor(Math.random() * 3);
   let card = cards[randomNumber];
-  playerColor = getTurnToPlay() == 0 ? "red" : "blue";
 
-  alert(playerColor);
+  console.log(card.message);
   alert(card.message);
 
   if (card.action == "redOpen") {
-    let element = document.querySelector(`.gate-${playerColor}`);
+    let element = document.querySelector(`.gate-red`);
 
     if (element.classList.contains("gate-close")) {
       element.classList.remove("gate-close");
@@ -302,15 +301,15 @@ function showACard(playerColor) {
     }
     return;
   } else if (card.action == "redClose") {
-    let element = document.querySelector(`.gate-${playerColor}`);
+    let element = document.querySelector(`.gate-red`);
 
     if (element.classList.contains("gate-open")) {
       element.classList.remove("gate-open");
       element.classList.add("gate-close");
     }
     return;
-  } else  if (card.action == "blueOpen") {
-    let element = document.querySelector(`.gate-${playerColor}`);
+  } else if (card.action == "blueOpen") {
+    let element = document.querySelector(`.gate-blue`);
 
     if (element.classList.contains("gate-close")) {
       element.classList.remove("gate-close");
@@ -318,7 +317,7 @@ function showACard(playerColor) {
     }
     return;
   } else if (card.action == "blueClose") {
-    let element = document.querySelector(`.gate-${playerColor}`);
+    let element = document.querySelector(`.gate-blue`);
 
     if (element.classList.contains("gate-open")) {
       element.classList.remove("gate-open");
@@ -330,9 +329,10 @@ function showACard(playerColor) {
 
 function playerMoveOnClick(cellID) {
   const mazeMatrix = createMatrixFromMaze();
-  let diceSide = document.getElementById("dice-side").value;
-  if (getTurnToPlay() === "1" && diceSide.length >= 1) {
-    if (diceSide >= 1) {
+  let diceValue = document.getElementById("dice-side").value;
+
+  if (getTurnToPlay() === "1" && diceValue.trim().length > 0) {
+    if (diceValue >= 1) {
       let playerPositionID = getPlayerPositionID(1);
       let availableCells = getAvailableAdjacentCells(
         mazeMatrix,
@@ -342,7 +342,7 @@ function playerMoveOnClick(cellID) {
       console.log(cellID);
       if (availableCells.indexOf(cellID) !== -1) {
         movePlayer("player-blue", cellID);
-        document.getElementById("dice-side").value = diceSide - 1;
+        document.getElementById("dice-side").value = diceValue - 1;
         if (document.getElementById("dice-side").value == 0) {
           setTurnToPlay(0);
           playNextTurn();
@@ -357,7 +357,7 @@ function playerMoveOnClick(cellID) {
           location.reload();
           return;
         } else if (playerBlueElement.parentElement.classList.contains("card")) {
-          showACard("Blue");
+          showACard();
           console.log("Hit the card");
         }
       } else {

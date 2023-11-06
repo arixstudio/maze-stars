@@ -213,7 +213,7 @@ function playPcTurn() {
       let newAvailableCells = availableCells.filter(
         (item) => !traversedCells.includes(item)
       );
-      let nextStepID = newAvailableCells[Math.round(Math.random())];
+      let nextStepID = newAvailableCells[Math.floor(Math.random() * (newAvailableCells.length - 1))];
       console.log(nextStepID);
       const playerRedElement = document.querySelector(".player-red");
       if (playerRedElement.parentElement.classList.contains("star-block"))
@@ -275,7 +275,7 @@ function showACard() {
     },
   ];
 
-  let randomNumber = Math.floor(Math.random() * 4) + 1;
+  let randomNumber = Math.floor(Math.random() * 3);
   let card = cards[randomNumber];
   let playerColor = getTurnToPlay() == 0 ? "red" : "blue";
   

@@ -196,6 +196,7 @@ function playPcTurn() {
   document.getElementById("player").value = "Player Red [PC]";
   document.getElementById("roll-dice").disabled = true;
   let dice = rollDice();
+  let isMoved = 0;
 
   var traversedCells = [];
 
@@ -224,8 +225,9 @@ function playPcTurn() {
         location.reload();
         return;
       } else
-      if (playerRedElement.parentElement.classList.contains("card") && document.getElementById("dice-side").value != dice)
+      if (playerRedElement.parentElement.classList.contains("card") && isMoved != 0)
       {
+        console.log('Hit the card')
         document.getElementById("dice-side").value = '0';
         showACard();
         setTurnToPlay(1);
@@ -233,6 +235,8 @@ function playPcTurn() {
         return;
       }
       movePlayer("player-red", nextStepID);
+      isMoved = 1;
+      console.log('Moved')
     }, (i + 1) * 500);
   }
   const timer2 = setTimeout(function () {

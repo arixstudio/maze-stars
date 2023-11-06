@@ -197,6 +197,7 @@ function playPcTurn() {
   document.getElementById("roll-dice").disabled = true;
   let dice = rollDice();
   let isMoved = 0;
+  let isOver = 0;
 
   var traversedCells = [];
 
@@ -216,19 +217,17 @@ function playPcTurn() {
       let nextStepID = newAvailableCells[Math.floor(Math.random() * (newAvailableCells.length - 1))];
       console.log(nextStepID);
       const playerRedElement = document.querySelector(".player-red");
-      if (playerRedElement.parentElement.classList.contains("star-block"))
+      if (playerRedElement.parentElement.classList.contains("star-block") && isMoved != 0 && isOver == 0)
       {
-        document.getElementById("dice-side").value = '0';
-        setTurnToPlay(0);
-        playNextTurn();
-        alert('GAME OVER')
+        isOver = 1;
+        alert('GAME OVER');
         location.reload();
         return;
       } else
-      if (playerRedElement.parentElement.classList.contains("card") && isMoved != 0)
+      if (playerRedElement.parentElement.classList.contains("card") && isMoved != 0 && isOver == 0)
       {
-        console.log('Hit the card')
-        document.getElementById("dice-side").value = '0';
+        isOver = 1;
+        console.log('Hit the card');
         showACard();
         setTurnToPlay(1);
         playNextTurn();
@@ -360,11 +359,7 @@ function playerMoveOnClick(cellID) {
         } else
         if (playerBlueElement.parentElement.classList.contains("card"))
         {
-          document.getElementById("dice-side").value = '0';
           showACard();
-          setTurnToPlay(0);
-          playNextTurn();
-          return;
         }
       } else {
         return;

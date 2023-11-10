@@ -187,7 +187,7 @@ function rollDice() {
   document.getElementById("roll-dice").disabled = true;
   // Generate a random number between 1 and 6
   let diceSide = Math.floor(Math.random() * 6) + 1;
-  console.log('Dice: ',diceSide)
+  console.log("Dice: ", diceSide);
   document.getElementById("dice-side").value = diceSide;
   return diceSide;
 }
@@ -211,7 +211,7 @@ function playPcTurn() {
         mazeMatrix,
         playerPositionID
       );
-      console.log('Available cells: ',availableCells)
+      console.log("Available cells: ", availableCells);
 
       // Remove traversed cells from available cells
       let newAvailableCells = availableCells.filter(
@@ -221,7 +221,7 @@ function playPcTurn() {
         newAvailableCells[
           Math.floor(Math.random() * (newAvailableCells.length - 1))
         ];
-      console.log('Next step:', nextStepID);
+      console.log("Next step:", nextStepID);
       const playerRedElement = document.querySelector(".player-red");
       if (
         playerRedElement.parentElement.classList.contains("star-block") &&
@@ -230,7 +230,7 @@ function playPcTurn() {
       ) {
         isOver = 1;
         alert("GAME OVER");
-        console.log('Player Blue won!')
+        console.log("Player Blue won!");
         // location.reload();
         return;
       } else if (
@@ -242,6 +242,8 @@ function playPcTurn() {
         showACard();
         setTurnToPlay(1);
         playNextTurn();
+        console.log(245);
+
         return;
       }
       movePlayer("player-red", nextStepID);
@@ -253,6 +255,8 @@ function playPcTurn() {
   const timer2 = setTimeout(function () {
     setTurnToPlay(1);
     playNextTurn();
+    console.log(258);
+
     clearTimeout(timer2);
   }, 3000);
 }
@@ -269,50 +273,57 @@ function playerMoveOnClick(cellID) {
   let diceValue = document.getElementById("dice-side").value;
 
   if (getTurnToPlay() === "1") {
-    if(diceValue.trim().length > 0)
-    {
+    if (diceValue.trim().length > 0) {
       if (diceValue >= 1) {
         let playerPositionID = getPlayerPositionID(1);
         let availableCells = getAvailableAdjacentCells(
           mazeMatrix,
           playerPositionID
         );
-        console.log('Available cells: ', availableCells);
-        console.log('Attempted cell: ',cellID);
+        console.log("Available cells: ", availableCells);
+        console.log("Attempted cell: ", cellID);
         if (availableCells.indexOf(cellID) !== -1) {
           movePlayer("player-blue", cellID);
-          console.log('Moved to: ',cellID);
+          console.log("Moved to: ", cellID);
           document.getElementById("dice-side").value = diceValue - 1;
           if (document.getElementById("dice-side").value == 0) {
             setTurnToPlay(0);
             playNextTurn();
+            console.log(293);
+
             return;
           }
           const playerBlueElement = document.querySelector(".player-blue");
-          if (playerBlueElement.parentElement.classList.contains("star-block")) {
+          if (
+            playerBlueElement.parentElement.classList.contains("star-block")
+          ) {
             document.getElementById("dice-side").value = "0";
-            console.log('Player Red won!')
+            console.log("Player Red won!");
             alert("YOU WON!");
             // location.reload();
             return;
-          } else if (playerBlueElement.parentElement.classList.contains("card")) {
+          } else if (
+            playerBlueElement.parentElement.classList.contains("card")
+          ) {
             showACard();
           }
         } else {
-          console.log('Unable to move to: ',cellID);
+          console.log("Unable to move to: ", cellID);
           return;
         }
       } else {
         setTurnToPlay(0);
         playNextTurn();
+        console.log(313);
       }
     } else {
-      console.log('Roll a dice first!')
+      console.log("Roll a dice first!");
       return;
     }
   } else {
     setTurnToPlay(0);
     playNextTurn();
+    console.log(324);
   }
 }
 
@@ -323,8 +334,7 @@ function playNextTurn() {
 }
 
 function showACard() {
-
-  console.log('[◩] Landed on card.');
+  console.log("[◩] Landed on card.");
   const cards = [
     {
       message: "Oops! Red gate is opened!",
@@ -347,7 +357,7 @@ function showACard() {
   let randomNumber = Math.floor(Math.random() * 3);
   let card = cards[randomNumber];
 
-  console.log('Card message: ',card.message);
+  console.log("Card message: ", card.message);
   alert(card.message);
 
   if (card.action == "redOpen") {
@@ -385,7 +395,6 @@ function showACard() {
   }
 }
 
-
 document.addEventListener("click", function (event) {
   if (event.target.classList.contains("grid-item")) {
     const cellID = event.target.getAttribute("id");
@@ -400,3 +409,4 @@ const gameOptions = {
 // Reset player turn on reload
 setTurnToPlay(0);
 playNextTurn();
+console.log(403);

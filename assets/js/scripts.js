@@ -1,4 +1,4 @@
-"use strict";
+"use strict"; 
 
 // Create the maze matrix
 function createMatrixFromMaze() {
@@ -206,7 +206,8 @@ document.querySelector("#roll-dice").addEventListener("click", function () {
 
 function playPcTurn() {
   console.log(
-    "======================== Player Red's turn ========================"
+    "%c ======================== Player Red's turn ========================",
+    'color: red'
   );
   let mazeMatrix = createMatrixFromMaze();
   document.getElementById("player").value = "Player Red [PC]";
@@ -256,8 +257,6 @@ function playPcTurn() {
         showACard();
         setTurnToPlay(1);
         playNextTurn();
-        console.log(245);
-
         return;
       }
       movePlayer("player-red", nextStepID);
@@ -278,7 +277,8 @@ function playPlayerOneTurn() {
   document.getElementById("roll-dice").disabled = false;
   document.getElementById("dice-side").value = "";
   console.log(
-    "======================== Player Blue's turn ========================"
+    "%c ======================== Player Blue's turn ========================",
+    'color: blue'
   );
 }
 
@@ -351,7 +351,10 @@ function playerMoveOnClick(cellID) {
 function playNextTurn() {
   let nextTurn = getTurnToPlay();
   if (nextTurn == 0) playPcTurn();
-  else playPlayerOneTurn();
+  else {
+    playPlayerOneTurn();
+    console.log('Roll a dice and start moving!')
+  }
 }
 
 function showACard() {

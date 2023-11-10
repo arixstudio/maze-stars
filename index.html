@@ -5,124 +5,126 @@
     <link rel="stylesheet" href="/assets/css/style.css" />
   </head>
   <body>
-    <!-- Maze -->
-    <div class="maze grid-container">
-      <span id="00" class="grid-item b1101" title="00--b1101"> </span>
-      <span id="01" class="grid-item b1010 start" title="01--b1010">
-        <span id="player-red" class="player player-red">●</span>
-      </span>
-      <span id="02" class="grid-item b1000" title="02--b1000"></span>
-      <span id="03" class="grid-item b1000" title="03--b1000"></span>
-      <span id="04" class="grid-item b1010" title="04--b1010"></span>
-      <span id="05" class="grid-item b1010" title="05--b1010"></span>
-      <span id="06" class="grid-item b1000" title="06--b1000"></span>
-      <span id="07" class="grid-item b1010" title="07--b1010"></span>
-      <span id="08" class="grid-item b1010" title="08--b1010"></span>
-      <span id="09" class="grid-item b1100 card" title="09--b1100"></span>
-      <span id="10" class="grid-item b0001" title="10--b0001"></span>
-      <span id="11" class="grid-item b0100" title="11--b0100"></span>
-      <span id="12" class="grid-item b0100" title="12--b0100"></span>
-      <span id="13" class="grid-item b0100" title="13--b0100"></span>
-      <span id="14" class="grid-item b0000" title="14--b0000"></span>
-      <span id="15" class="grid-item b0010" title="15--b0010"></span>
-      <span id="16" class="grid-item b0010" title="16--b0010"></span>
-      <span id="17" class="grid-item b0010" title="17--b0010"></span>
-      <span id="18" class="grid-item b0100" title="18--b0100"></span>
-      <span id="19" class="grid-item b0100" title="19--b0100"></span>
-      <span id="20" class="grid-item b0101" title="20--b0101"></span>
-      <span id="21" class="grid-item b0010" title="21--b0010"></span>
-      <span id="22" class="grid-item b0110" title="22--b0110"></span>
-      <span id="23" class="grid-item b0100" title="23--b0100"></span>
-      <span id="24" class="grid-item b0000" title="24--b0000"></span>
-      <span id="25" class="grid-item b0000" title="25--b0000"></span>
-      <span id="26" class="grid-item b0011" title="26--b0011"></span>
-      <span id="27" class="grid-item b0010" title="27--b0010"></span>
-      <span id="28" class="grid-item b0110 card" title="28--b0110"></span>
-      <span id="29" class="grid-item b0100" title="29--b0100"></span>
-      <span id="30" class="grid-item b0001" title="30--b0001"></span>
-      <span id="31" class="grid-item b0000" title="31--b0000"></span>
-      <span id="32" class="grid-item b0000 card" title="32--b0000"></span>
-      <span id="33" class="grid-item b0000" title="33--b0000"></span>
-      <span id="34" class="grid-item b0010" title="34--b0010"></span>
-      <span id="35" class="grid-item b0011" title="35--b0011"></span>
-      <span id="36" class="grid-item b0100" title="36--b0100"></span>
-      <span id="37" class="grid-item b0000" title="37--b0000"></span>
-      <span id="38" class="grid-item b0100" title="38--b0100"></span>
-      <span id="39" class="grid-item b0100" title="39--b0100"></span>
-      <span id="40" class="grid-item b0011" title="40--b0011"></span>
-      <span id="41" class="grid-item b1010" title="41--b1010"></span>
-      <span id="42" class="grid-item b1000" title="42--b1000"></span>
-      <span id="43" class="grid-item b0001" title="43--b0001"></span>
-      <span
-        id="44"
-        class="grid-item b0000 star-block gate-red gate-close"
-        title="44--b0000"
-      ></span>
-      <span
-        id="45"
-        class="grid-item b0100 star-block star-bg"
-        title="45--b0100"
-      ></span>
-      <span id="46" class="grid-item b0010" title="46--b0010"></span>
-      <span id="47" class="grid-item b0110" title="47--b0110"></span>
-      <span id="48" class="grid-item b0010" title="48--b0010"></span>
-      <span id="49" class="grid-item b0110" title="49--b0110"></span>
-      <span id="50" class="grid-item b0001" title="50--b0001"></span>
-      <span id="51" class="grid-item b0010" title="51--b0010"></span>
-      <span id="52" class="grid-item b0010" title="52--b0010"></span>
-      <span id="53" class="grid-item b1001" title="53--b1001"></span>
-      <span id="54" class="grid-item b0001 star-block" title="54--b0001"></span>
-      <span
-        id="55"
-        class="grid-item b0000 star-block gate-blue gate-close"
-        title="55--b0000"
-      ></span>
-      <span id="56" class="grid-item b0010" title="56--b0010"></span>
-      <span id="57" class="grid-item b0000" title="57--b0000"></span>
-      <span id="58" class="grid-item b0010" title="58--b0010"></span>
-      <span id="59" class="grid-item b0110" title="59--b0110"></span>
-      <span id="60" class="grid-item b0101" title="60--b0101"></span>
-      <span id="61" class="grid-item b0010 card" title="61--b0010"></span>
-      <span id="62" class="grid-item b0000" title="62--b0000"></span>
-      <span id="63" class="grid-item b0001" title="63--b0001"></span>
-      <span id="64" class="grid-item b1000" title="64--b1000"></span>
-      <span id="65" class="grid-item b1001" title="65--b1001"></span>
-      <span id="66" class="grid-item b0000" title="66--b0000"></span>
-      <span id="67" class="grid-item b0110" title="67--b0110"></span>
-      <span id="68" class="grid-item b0000" title="68--b0000"></span>
-      <span id="69" class="grid-item b0100" title="69--b0100"></span>
-      <span id="70" class="grid-item b0101" title="70--b0101"></span>
-      <span id="71" class="grid-item b0000" title="71--b0000"></span>
-      <span id="72" class="grid-item b0010" title="72--b0010"></span>
-      <span id="73" class="grid-item b0110" title="73--b0110"></span>
-      <span id="74" class="grid-item b0010" title="74--b0010"></span>
-      <span id="75" class="grid-item b0110" title="75--b0110"></span>
-      <span id="76" class="grid-item b0010" title="76--b0010"></span>
-      <span id="77" class="grid-item b0010 card" title="77--b0010"></span>
-      <span id="78" class="grid-item b0110" title="78--b0110"></span>
-      <span id="79" class="grid-item b0100" title="79--b0100"></span>
-      <span id="80" class="grid-item b0101" title="80--b0101"></span>
-      <span id="81" class="grid-item b0010" title="81--b0010"></span>
-      <span id="82" class="grid-item b0010" title="82--b0010"></span>
-      <span id="83" class="grid-item b0000" title="83--b0000"></span>
-      <span id="84" class="grid-item b0000" title="84--b0000"></span>
-      <span id="85" class="grid-item b0000" title="85--b0000"></span>
-      <span id="86" class="grid-item b0110" title="86--b0110"></span>
-      <span id="87" class="grid-item b0000" title="87--b0000"></span>
-      <span id="88" class="grid-item b0100" title="88--b0100"></span>
-      <span id="89" class="grid-item b0100" title="89--b0100"></span>
-      <span id="90" class="grid-item b0011" title="90--b0011"></span>
-      <span id="91" class="grid-item b0010" title="91--b0010"></span>
-      <span id="92" class="grid-item b0010" title="92--b0010"></span>
-      <span id="93" class="grid-item b0110" title="93--b0110"></span>
-      <span id="94" class="grid-item b0110 start" title="94--b0110"
-        ><span id="player-blue" class="player player-blue">⬣</span></span
-      >
-      <span id="95" class="grid-item b0010" title="95--b0010"></span>
-      <span id="96" class="grid-item b0010" title="96--b0010"></span>
-      <span id="97" class="grid-item b0110" title="97--b0110"></span>
-      <span id="98" class="grid-item b0010" title="98--b0010"></span>
-      <span id="99" class="grid-item b0110" title="99--b0110"></span>
+    <div class="board">
+      <!-- Maze -->
+      <div class="maze grid-container">
+        <span id="00" class="grid-item b1101" title="00--b1101"> </span>
+        <span id="01" class="grid-item b1010 start" title="01--b1010">
+          <span id="player-red" class="player player-red">●</span>
+        </span>
+        <span id="02" class="grid-item b1000" title="02--b1000"></span>
+        <span id="03" class="grid-item b1000" title="03--b1000"></span>
+        <span id="04" class="grid-item b1010" title="04--b1010"></span>
+        <span id="05" class="grid-item b1010" title="05--b1010"></span>
+        <span id="06" class="grid-item b1000" title="06--b1000"></span>
+        <span id="07" class="grid-item b1010" title="07--b1010"></span>
+        <span id="08" class="grid-item b1010" title="08--b1010"></span>
+        <span id="09" class="grid-item b1100 card" title="09--b1100"></span>
+        <span id="10" class="grid-item b0001" title="10--b0001"></span>
+        <span id="11" class="grid-item b0100" title="11--b0100"></span>
+        <span id="12" class="grid-item b0100" title="12--b0100"></span>
+        <span id="13" class="grid-item b0100" title="13--b0100"></span>
+        <span id="14" class="grid-item b0000" title="14--b0000"></span>
+        <span id="15" class="grid-item b0010" title="15--b0010"></span>
+        <span id="16" class="grid-item b0010" title="16--b0010"></span>
+        <span id="17" class="grid-item b0010" title="17--b0010"></span>
+        <span id="18" class="grid-item b0100" title="18--b0100"></span>
+        <span id="19" class="grid-item b0100" title="19--b0100"></span>
+        <span id="20" class="grid-item b0101" title="20--b0101"></span>
+        <span id="21" class="grid-item b0010" title="21--b0010"></span>
+        <span id="22" class="grid-item b0110" title="22--b0110"></span>
+        <span id="23" class="grid-item b0100" title="23--b0100"></span>
+        <span id="24" class="grid-item b0000" title="24--b0000"></span>
+        <span id="25" class="grid-item b0000" title="25--b0000"></span>
+        <span id="26" class="grid-item b0011" title="26--b0011"></span>
+        <span id="27" class="grid-item b0010" title="27--b0010"></span>
+        <span id="28" class="grid-item b0110 card" title="28--b0110"></span>
+        <span id="29" class="grid-item b0100" title="29--b0100"></span>
+        <span id="30" class="grid-item b0001" title="30--b0001"></span>
+        <span id="31" class="grid-item b0000" title="31--b0000"></span>
+        <span id="32" class="grid-item b0000 card" title="32--b0000"></span>
+        <span id="33" class="grid-item b0000" title="33--b0000"></span>
+        <span id="34" class="grid-item b0010" title="34--b0010"></span>
+        <span id="35" class="grid-item b0011" title="35--b0011"></span>
+        <span id="36" class="grid-item b0100" title="36--b0100"></span>
+        <span id="37" class="grid-item b0000" title="37--b0000"></span>
+        <span id="38" class="grid-item b0100" title="38--b0100"></span>
+        <span id="39" class="grid-item b0100" title="39--b0100"></span>
+        <span id="40" class="grid-item b0011" title="40--b0011"></span>
+        <span id="41" class="grid-item b1010" title="41--b1010"></span>
+        <span id="42" class="grid-item b1000" title="42--b1000"></span>
+        <span id="43" class="grid-item b0001" title="43--b0001"></span>
+        <span
+          id="44"
+          class="grid-item b0000 star-block gate-red gate-close"
+          title="44--b0000"
+        ></span>
+        <span
+          id="45"
+          class="grid-item b0100 star-block star-bg"
+          title="45--b0100"
+        ></span>
+        <span id="46" class="grid-item b0010" title="46--b0010"></span>
+        <span id="47" class="grid-item b0110" title="47--b0110"></span>
+        <span id="48" class="grid-item b0010" title="48--b0010"></span>
+        <span id="49" class="grid-item b0110" title="49--b0110"></span>
+        <span id="50" class="grid-item b0001" title="50--b0001"></span>
+        <span id="51" class="grid-item b0010" title="51--b0010"></span>
+        <span id="52" class="grid-item b0010" title="52--b0010"></span>
+        <span id="53" class="grid-item b1001" title="53--b1001"></span>
+        <span id="54" class="grid-item b0001 star-block" title="54--b0001"></span>
+        <span
+          id="55"
+          class="grid-item b0000 star-block gate-blue gate-close"
+          title="55--b0000"
+        ></span>
+        <span id="56" class="grid-item b0010" title="56--b0010"></span>
+        <span id="57" class="grid-item b0000" title="57--b0000"></span>
+        <span id="58" class="grid-item b0010" title="58--b0010"></span>
+        <span id="59" class="grid-item b0110" title="59--b0110"></span>
+        <span id="60" class="grid-item b0101" title="60--b0101"></span>
+        <span id="61" class="grid-item b0010 card" title="61--b0010"></span>
+        <span id="62" class="grid-item b0000" title="62--b0000"></span>
+        <span id="63" class="grid-item b0001" title="63--b0001"></span>
+        <span id="64" class="grid-item b1000" title="64--b1000"></span>
+        <span id="65" class="grid-item b1001" title="65--b1001"></span>
+        <span id="66" class="grid-item b0000" title="66--b0000"></span>
+        <span id="67" class="grid-item b0110" title="67--b0110"></span>
+        <span id="68" class="grid-item b0000" title="68--b0000"></span>
+        <span id="69" class="grid-item b0100" title="69--b0100"></span>
+        <span id="70" class="grid-item b0101" title="70--b0101"></span>
+        <span id="71" class="grid-item b0000" title="71--b0000"></span>
+        <span id="72" class="grid-item b0010" title="72--b0010"></span>
+        <span id="73" class="grid-item b0110" title="73--b0110"></span>
+        <span id="74" class="grid-item b0010" title="74--b0010"></span>
+        <span id="75" class="grid-item b0110" title="75--b0110"></span>
+        <span id="76" class="grid-item b0010" title="76--b0010"></span>
+        <span id="77" class="grid-item b0010 card" title="77--b0010"></span>
+        <span id="78" class="grid-item b0110" title="78--b0110"></span>
+        <span id="79" class="grid-item b0100" title="79--b0100"></span>
+        <span id="80" class="grid-item b0101" title="80--b0101"></span>
+        <span id="81" class="grid-item b0010" title="81--b0010"></span>
+        <span id="82" class="grid-item b0010" title="82--b0010"></span>
+        <span id="83" class="grid-item b0000" title="83--b0000"></span>
+        <span id="84" class="grid-item b0000" title="84--b0000"></span>
+        <span id="85" class="grid-item b0000" title="85--b0000"></span>
+        <span id="86" class="grid-item b0110" title="86--b0110"></span>
+        <span id="87" class="grid-item b0000" title="87--b0000"></span>
+        <span id="88" class="grid-item b0100" title="88--b0100"></span>
+        <span id="89" class="grid-item b0100" title="89--b0100"></span>
+        <span id="90" class="grid-item b0011" title="90--b0011"></span>
+        <span id="91" class="grid-item b0010" title="91--b0010"></span>
+        <span id="92" class="grid-item b0010" title="92--b0010"></span>
+        <span id="93" class="grid-item b0110" title="93--b0110"></span>
+        <span id="94" class="grid-item b0110 start" title="94--b0110"
+          ><span id="player-blue" class="player player-blue">⬣</span></span
+        >
+        <span id="95" class="grid-item b0010" title="95--b0010"></span>
+        <span id="96" class="grid-item b0010" title="96--b0010"></span>
+        <span id="97" class="grid-item b0110" title="97--b0110"></span>
+        <span id="98" class="grid-item b0010" title="98--b0010"></span>
+        <span id="99" class="grid-item b0110" title="99--b0110"></span>
+      </div>
     </div>
     <br />
     <br />
@@ -148,7 +150,7 @@
       <input type="text" id="player" name="player" value="" disabled />
       <button id="roll-dice">Roll Dice</button>
       <input
-        style="width: 15px"
+        style="width: 30px"
         type="text"
         id="dice-side"
         name="dice-side"

@@ -255,8 +255,6 @@ function playPcTurn() {
   const timer2 = setTimeout(function () {
     setTurnToPlay(1);
     playNextTurn();
-    console.log(258);
-
     clearTimeout(timer2);
   }, 3000);
 }
@@ -289,7 +287,6 @@ function playerMoveOnClick(cellID) {
           if (document.getElementById("dice-side").value == 0) {
             setTurnToPlay(0);
             playNextTurn();
-            console.log(293);
 
             return;
           }
@@ -314,7 +311,6 @@ function playerMoveOnClick(cellID) {
       } else {
         setTurnToPlay(0);
         playNextTurn();
-        console.log(313);
       }
     } else {
       console.log("Roll a dice first!");
@@ -323,7 +319,6 @@ function playerMoveOnClick(cellID) {
   } else {
     setTurnToPlay(0);
     playNextTurn();
-    console.log(324);
   }
 }
 
@@ -409,4 +404,3 @@ const gameOptions = {
 // Reset player turn on reload
 setTurnToPlay(0);
 playNextTurn();
-console.log(403);

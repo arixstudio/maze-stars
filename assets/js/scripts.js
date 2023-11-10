@@ -45,8 +45,6 @@ function getCellInnerAvailableDirections(cellID) {
 
   const availableDirections = [];
 
-  // Just check if the main maze border is near!
-
   if (currentCellClass.length) {
     let lastFourDigits = currentCellClass.slice(-4);
 
@@ -246,7 +244,7 @@ function playPcTurn() {
         isOver = 1;
         alert("GAME OVER");
         console.log("Player Blue won!");
-        // location.reload();
+        location.reload();
         return;
       } else if (
         playerRedElement.parentElement.classList.contains("card") &&
@@ -323,7 +321,7 @@ function playerMoveOnClick(cellID) {
             document.getElementById("dice-side").value = "0";
             console.log("Player Red won!");
             alert("YOU WON!");
-            // location.reload();
+            location.reload();
             return;
           } else if (
             playerBlueElement.parentElement.classList.contains("card")
@@ -430,6 +428,13 @@ const gameOptions = {
   players: 1,
   difficulty: 0,
 };
-// Reset player turn on reload
-setTurnToPlay(0);
-playNextTurn();
+
+document.querySelector('#start').addEventListener('click', function(e){
+  e.preventDefault()
+  setTurnToPlay(0);
+  playNextTurn();
+});
+
+document.querySelector('#reset').addEventListener('click', function(e){
+  location.reload();
+});

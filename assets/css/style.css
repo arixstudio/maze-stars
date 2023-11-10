@@ -122,7 +122,7 @@
   overflow: visible;
   width: 600px;
   height: 600px;
-  margin: 50px auto 0;
+  margin: 23px auto 0;
   padding-top: 19px;
 }
 
@@ -218,4 +218,12 @@ input {
 button {
   padding: 14px 10px 8px 9px;
   display: inline-block;
+}
+
+#start,
+#reset {
+  color: #000;
+  text-decoration: none;
+  margin-top: -10px;
+  font-size: 20px;
 }

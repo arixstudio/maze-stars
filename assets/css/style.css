@@ -125,7 +125,10 @@
 
 .control-container {
   text-align: center;
-  margin-left: 18px;
+}
+
+#roll-dice {
+  cursor: pointer;
 }
 
 .grid-item {
@@ -135,6 +138,7 @@
   text-align: center;
   height: 50px;
   width: 50px;
+  cursor: pointer;
 }
 .player-red {
   color: red;
@@ -147,7 +151,10 @@
   line-height: 50px;
 }
 .available {
-  background-color: #46ffc1;
+  transition: all 0.5s;
+}
+.available:hover {
+  background-color: #ddfff3;
 }
 .gate-red.gate-close {
   border-top: 0;

@@ -192,8 +192,22 @@ function rollDice() {
   return diceSide;
 }
 
+document.querySelector("#roll-dice").addEventListener("click", function () {
+  rollDice();
+  const mazeMatrix = createMatrixFromMaze();
+  let playerPositionID = getPlayerPositionID(1);
+  let availableCells = getAvailableAdjacentCells(
+    mazeMatrix,
+    playerPositionID
+  );
+  console.log("Available Cells: ",availableCells);
+  markAvailableAdjacentCells(availableCells);
+});
+
 function playPcTurn() {
-  console.log("==== Player Red's turn ====");
+  console.log(
+    "======================== Player Red's turn ========================"
+  );
   let mazeMatrix = createMatrixFromMaze();
   document.getElementById("player").value = "Player Red [PC]";
   document.getElementById("roll-dice").disabled = true;
@@ -263,7 +277,9 @@ function playPlayerOneTurn() {
   document.getElementById("player").value = "Player Blue [You]";
   document.getElementById("roll-dice").disabled = false;
   document.getElementById("dice-side").value = "";
-  console.log("==== Player Blue's turn ====");
+  console.log(
+    "======================== Player Blue's turn ========================"
+  );
 }
 
 function playerMoveOnClick(cellID) {
@@ -278,10 +294,20 @@ function playerMoveOnClick(cellID) {
           mazeMatrix,
           playerPositionID
         );
+
+        markAvailableAdjacentCells(availableCells);
+
         console.log("Available cells: ", availableCells);
         console.log("Attempted cell: ", cellID);
         if (availableCells.indexOf(cellID) !== -1) {
           movePlayer("player-blue", cellID);
+          let playerPositionID = getPlayerPositionID(1);
+          let availableCells = getAvailableAdjacentCells(
+            mazeMatrix,
+            playerPositionID
+          );
+
+          markAvailableAdjacentCells(availableCells);
           console.log("Moved to: ", cellID);
           document.getElementById("dice-side").value = diceValue - 1;
           if (document.getElementById("dice-side").value == 0) {

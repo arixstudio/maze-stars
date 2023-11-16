@@ -261,13 +261,13 @@ function playPcTurn() {
       isMoved = 1;
       console.log("Moved to:", nextStepID);
       clearTimeout(timer1);
+      if (i <= dice)
+      {
+        setTurnToPlay(1);
+        playNextTurn();
+      }
     }, (i + 1) * 500);
   }
-  const timer2 = setTimeout(function () {
-    setTurnToPlay(1);
-    playNextTurn();
-    clearTimeout(timer2);
-  }, 3000);
 }
 
 function playPlayerOneTurn() {

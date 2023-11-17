@@ -72,7 +72,11 @@
         <span id="51" class="grid-item b0010" title="51--b0010"></span>
         <span id="52" class="grid-item b0010" title="52--b0010"></span>
         <span id="53" class="grid-item b1001" title="53--b1001"></span>
-        <span id="54" class="grid-item b0001 star-block" title="54--b0001"></span>
+        <span
+          id="54"
+          class="grid-item b0001 star-block"
+          title="54--b0001"
+        ></span>
         <span
           id="55"
           class="grid-item b0000 star-block gate-blue gate-close"
@@ -130,10 +134,10 @@
     <br />
     <!-- Control -->
     <div class="control-container">
-      <a href="#" id="start">Start</a> | 
+      <a href="#" id="start">Start</a> |
       <a href="#" id="reset">Reset</a>
-      <br>
-      <br>
+      <br />
+      <br />
       <input
         type="radio"
         id="singlePlayer"
@@ -151,8 +155,15 @@
       />
       <label for="multiplayer" style="margin-right: 20px">2 Players</label>
       <label for="player">Player:</label>
-      <input type="text" id="player" name="player" value="" disabled />
-      <button id="roll-dice">Roll Dice</button>
+      <input
+        type="text"
+        id="player"
+        name="player"
+        value=""
+        disabled
+        autocomplete="off"
+      />
+      <button id="roll-dice" disabled>Roll Dice</button>
       <input
         style="width: 30px"
         type="text"
@@ -160,12 +171,13 @@
         name="dice-side"
         value=""
         disabled
+        autocomplete="off"
       />
-      <br>
-      <br>
-      <br>
+      <br />
+      <br />
+      <br />
       <audio controls autoplay>
-        <source src="/assets/sound/intro.mp3" type="audio/mpeg">
+        <source src="/assets/sound/intro.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
       </audio>
     </div>

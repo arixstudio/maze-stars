@@ -211,6 +211,7 @@ function playPcTurn() {
   document.getElementById("player").value = "Player Red [PC]";
   document.getElementById("roll-dice").disabled = true;
   let dice = rollDice();
+  document.getElementById("dice-side").value = dice;
   let isMoved = 0;
   let isOver = 0;
 
@@ -261,7 +262,7 @@ function playPcTurn() {
       isMoved = 1;
       console.log("Moved to:", nextStepID);
       clearTimeout(timer1);
-      if (i <= dice)
+      if (i == dice)
       {
         setTurnToPlay(1);
         playNextTurn();
@@ -438,3 +439,5 @@ document.querySelector('#start').addEventListener('click', function(e){
 document.querySelector('#reset').addEventListener('click', function(e){
   location.reload();
 });
+
+document.getElementById("roll-dice").disabled = true;
